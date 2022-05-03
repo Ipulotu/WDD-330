@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W02 Team Activity</title>
+</head>
+<body>
+    <h1>W02 Team Activity</h1>
+<!--
+
+
+======== Step One  =========
+Add a text input and a button. Put an empty div with an ID below those.
+
+Add a script tag, write a function that will read the contents of the input, and write them to the div.
+
+Call the function when the button is pressed.
+
+
+======== Step Two  =========
+Write a new function that expects a number as an argument. It should take that number and sum all the numbers up to the number provided. 
+(ie n=5…so it would do 1+2+3+4+5 = 15) It should return that value.
+
+When the button is pressed it should read the number from the input. 
+Make sure it is a valid number, call the summing function you just wrote, and output the result to the div.
+
+
+======== Step Three  =========
+Add an additional input to your HTML file.
+
+Add a + button.
+
+Write a function that will take the numbers from each input, add them together, and output the result to a div
+
+
+ -->
+
+ <input id="input1" type="text" />
+ <button id="button1" onclick="readInput1()">Click</button>
+ <div id="output1"></div>
+
+ <input id="input2" type="text" />
+ <button id="button2" onclick="sumInput2()">Sum</button>
+ <div id="output2"></div>
+
+ <input id="input3" type="text" />
+ <button id="button3" onclick="sumInput3()">+</button>
+ <div id="output3"></div>
+
+ <button id="button4" onclick="Inputsub4()">-</button>
+ <div id="output4"></div>
+
+
+
+ <script>
+   function readInput1() {
+     const input = document.getElementById('input1').value;
+     const output = document.getElementById('output1');
+     output.innerHTML = input;
+   }
+
+   function sumInput2() {
+     const input = document.getElementById('input2').value;
+     const output = document.getElementById('output2');
+     let number = parseInt(input);
+     if (number !== NaN) {
+       output.innerHTML = sum(number);
+     } 
+   }
+
+   function sumInput3() {
+     const input1 = document.getElementById('input1').value;
+     const input2 = document.getElementById('input2').value;
+     const input3 = document.getElementById('input3').value;
+     const output = document.getElementById('output3');
+     let total = 0
+       output.innerHTML = parseInt(input1) + parseInt(input2)+ parseInt(input3);
+   }
+
+   function sum(num) {
+     let answer = 0;
+     for (let i = 1; i <= num; i++) {
+       answer += i;
+     }
+     return answer;
+   }
+
+     // stretch solution
+
+     function Inputsub4() {
+     const input1 = document.getElementById('input1').value;
+     const input2 = document.getElementById('input2').value;
+     const output = document.getElementById('output4');
+       output.innerHTML = subtraction(parseInt(input1), parseInt(input2));
+   }
+      let subtraction = function(num1, num2) {
+        return num1 - num2;
+      };
+      
+      const mult2 = (num1, num2) => num1 * num2;
+
+ </script>
+
+</body>
+</html>

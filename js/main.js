@@ -27,9 +27,17 @@ const urls = [
         url: "week2/index.html"
     },
     {
-        label: "",
+        label: "week 3",
         url: "week3/index.html"
-    }
+    },
+    {
+      label: "",
+      url: "week4/index.html"
+  },
+  {
+    label: "",
+    url: "week5/index.html"
+}
 
   ]
 
