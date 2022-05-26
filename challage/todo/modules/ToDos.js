@@ -102,7 +102,7 @@ check the contents of todoList, a local variable containing a list of ToDos. If 
 */
 
 function getTodos(key) { 
-    if (todoList.length == 0){
+    if (todoList.length == 0 && localStorage.getItem(key) !== null ){
         let ls = JSON.parse(readFromLS(key))
    
         ls.forEach( todo =>{
@@ -110,6 +110,7 @@ function getTodos(key) {
         });
         todos.listTodos();
     }
+    todos.listTodos();
 }
 
 /*

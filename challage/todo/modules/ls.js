@@ -10,7 +10,8 @@ export function readFromLS(key) {
     if (data !== null)
         return localStorage.getItem(key);
     else 
-        console.log("localStorage is empty!")
+        return false;
+        
 }
 
 
