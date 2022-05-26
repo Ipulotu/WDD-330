@@ -1,0 +1,47 @@
+
+body{
+    max-width: 350px;
+    margin: auto;
+}
+
+h1{
+    text-align: center;
+}
+
+
+
+#toDoCard{
+    padding: 0;
+}
+
+.toDoItem{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: solid 3px black;
+}
+
+.toDoItem p{
+    text-align: left;
+}
+
+
+
+.complete p{
+    text-decoration: line-through;
+}
+
+.hide{
+    display: none;
+}
+
+#toDoBtn{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: solid 3px black;
+}
+
+#toDoBtn p{
+    padding: .5rem;
+}
