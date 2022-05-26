@@ -39,8 +39,8 @@ const urls = [
     url: "week5/index.html"
   },
   {
-  label: "",
-  url: "week6/index.html"
+  label: "week 6(ToDo challage)",
+  url: "challage/todo/index.html"
 }
 
   ]
