@@ -1,0 +1,24 @@
+.draganddrop .mc {
+    text-align: center; 
+}
+
+html{
+    max-width: 1000px;
+    margin: auto;
+}
+
+
+#cat{
+    max-width: 200px;
+    margin: auto;
+
+}
+
+p{
+    display: flex
+}
+
+
+p img{
+    max-width: 150px;
+}
