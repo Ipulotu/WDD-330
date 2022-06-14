@@ -1,6 +1,6 @@
 
 
-const ol = document.querySelector('ol');
+const ul = document.querySelector('ul');
 
 
 function appendurl(url){
@@ -12,7 +12,7 @@ function appendurl(url){
     a.textContent = url.label;
    
     li.appendChild(a);
-    ol.appendChild(li);
+    ul.appendChild(li);
 
 }
 
@@ -49,7 +49,11 @@ const urls = [
   {
     label: "week 8",
     url: "week8/index.html"
-    }
+    },
+    {
+      label: "week 9",
+      url: "week9/index.html"
+      }
 
   ]
 
