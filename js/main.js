@@ -49,11 +49,15 @@ const urls = [
   {
     label: "week 8",
     url: "week8/index.html"
-    },
-    {
-      label: "week 9",
-      url: "week9/index.html"
-      }
+  },
+  {
+    label: "week 9",
+    url: "week9/index.html"
+  },
+  {
+    label: "week 10",
+    url: "week10/index.html"
+  }
 
   ]
 

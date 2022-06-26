@@ -96,17 +96,4 @@ export default class SpellView {
         clearElement(element);
         element.appendChild(div);
     }
-    
-
-    
-    async BuildSpell(url){
-        let div = document.createElement('div');
-        let inner = document.createElement('div');
-        let close = document.createElement('button');
-
-
-        div.classList.add("overlay");
-        inner.classList.add("overlay-inner");
-        close.classList.add("close");
-    }   
 }
