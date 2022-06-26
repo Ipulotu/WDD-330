@@ -1,3 +1,6 @@
 
+import SpellbookController from './module/SpellbookController.js';
 
-console.log("hello");
+let elment = document.querySelector("#content");
+const sb = new SpellbookController(elment);
+sb.init();

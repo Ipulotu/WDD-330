@@ -1,0 +1,138 @@
+
+:root{
+    --dark-brown: #995E20;
+    --medium-brown: #F4AE4A;
+    --light-brown: #F5D29A;
+    --orange-brown: #AD5015;
+
+
+}
+
+
+html{
+    background-color: var(--medium-brown);
+}
+
+/* 
+#content{
+} 
+*/
+.overlay {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    z-index: 2;
+  }
+
+  .overlay.open {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .overlay-inner {
+    background: white;
+    width: 700px;
+    padding: 20px;
+  }
+
+  
+
+
+/*=========== Dashboard page =================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*=========== SpellList page =================*/
+
+.spellView{
+    margin: auto;
+    max-width: 1000px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.spellView >*{
+    margin: 1rem;
+}
+
+.spellView h1 {
+    grid-column: 1 / span 4;
+}
+
+.spellView h2 {
+    grid-column: 1 / span 1;
+}
+
+#homeBnt{ 
+    grid-column: 4/ span 1;
+
+}
+
+.spellList{
+    grid-column: 1/span 4;
+    border: 2px solid black;    
+}
+
+.spellList div:nth-child(even){
+    background-color: #F4AE4A;
+
+}
+
+.spells{
+    display: grid;
+    grid-template-columns: 75% 10% 15%;
+    
+}
+
+/* .spells button{
+    
+} */
+
+#prvBnt{
+    grid-column: 2/span 1;
+}
+
+#nextBnt{
+    grid-column: 3/span 1;
+
+}
+
+
+
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  Medium view @@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+@media only screen and (min-width:670px) {
+
+
+}
+
+
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Large view @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+@media only screen and (min-width:1055px) {
+
+
+
+
+}

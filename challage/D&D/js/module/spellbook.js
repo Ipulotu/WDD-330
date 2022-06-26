@@ -2,15 +2,17 @@
 import {getJSON, readFromLS, writeToLS} from "./utilities.js"
 
 
-
 export default class Spellbook{
     constructor() {
         this.knowSpells = [];
+        this.urlIndex = 0;
         this.key = "spellsKnow";
         this.url = "https://www.dnd5eapi.co/api/spells";
+        this.spellURL = [];
+        this.spellListCount = 10;
 
         //Cheking LS for knowSpells & adding them if need 
-        if (knowSpells.length == 0 && localStorage.getItem(this.key) !== null ){
+        if (this.knowSpells.length == 0 && localStorage.getItem(this.key) !== null ){
             let ls = JSON.parse(readFromLS(key))
             ls.forEach(spell =>{
                 this.knowSpells.push(spell);
@@ -18,31 +20,74 @@ export default class Spellbook{
         }
     };
 
-    async getAllSpells(){
+    async getSpellURL(){
         let data = await getJSON(this.url);
         let results = data.results;
-        return results;
+        results.forEach(async spellURL =>{
+            this.spellURL.push(spellURL);
+        });
     }
 
+    async nextSpells(){
+        //Thougths* Fetch names with spell urls. ftach full data only when clicked. 
+        let holder = this.spellListCount;
+        if(this.urlIndex+holder > 319){
+            holder = 319-this.urlIndex;
+        }
+        let spells = [];
+        for (let index = 0; index < holder; index++){
+            let list = this.spellURL;
+            let spell = list[this.urlIndex];
+            this.urlIndex += 1;
+            //let url = list[this.urlIndex].url;
+            //let data = await this.getSpell(url);
+            spells.push(spell);
+        }
+        return spells;
+    }
+    
+    async prvSpells(){
+        if(this.urlIndex-(this.spellListCount*2) < 0){
+            return null;
+        }
+        else{
+            this.urlIndex -= (this.spellListCount*2);
+            let spells = [];
+
+            for (let index = 0; index < this.spellListCount; index++){
+                let list = this.spellURL;
+                let spell = list[this.urlIndex];
+                this.urlIndex += 1;
+                spells.push(spell);
+            }
+            return spells;
+        }
+    }
+
+
     async getSpell(url){ 
-        return getJSON(url);
+        let query = `https://www.dnd5eapi.co${url}`;
+        return getJSON(query);
     }
 
     async learnSpell(url){
-        let spell = await this.getSpell(url)
-        this.knowSpells.append(spell);
-        writeToLS(this.key, this.knowSpells);
+        let spell = await this.getSpell(url); 
+        let spellName = spell.name;
+        if (this.find(spellName) == null){
+            this.knowSpells.append(spell);
+            writeToLS(this.key, this.knowSpells);
+        }
     }
 
-    forgetSpell(spell_id){
-        let spell = this.find(spell_id);
+    forgetSpell(spellName){
+        let spell = this.find(spellName);
         let index = this.knowSpells.findIndex(spell);
         this.knowSpells = this.knowSpells.splice(index, 1);
         writeToLS(this.key, this.knowSpells);
     }
 
-    find(spell_id){
-        return this.knowSpells.find(spell => spell._id == spell_id);
+    find(spellName){
+        return this.knowSpells.find(spell => spell.name == spellName);
     }
 
   
