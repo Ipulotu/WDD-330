@@ -9,11 +9,11 @@ export default class Spellbook{
         this.key = "spellsKnow";
         this.url = "https://www.dnd5eapi.co/api/spells";
         this.spellURL = [];
-        this.spellListCount = 10;
+        this.spellListCount = 15;
 
         //Cheking LS for knowSpells & adding them if need 
         if (this.knowSpells.length == 0 && localStorage.getItem(this.key) !== null ){
-            let ls = JSON.parse(readFromLS(key))
+            let ls = JSON.parse(readFromLS(this.key))
             ls.forEach(spell =>{
                 this.knowSpells.push(spell);
             });
@@ -29,7 +29,7 @@ export default class Spellbook{
     }
 
     async nextSpells(){
-        //Thougths* Fetch names with spell urls. ftach full data only when clicked. 
+        //Thougths*  
         let holder = this.spellListCount;
         if(this.urlIndex+holder > 319){
             holder = 319-this.urlIndex;
@@ -64,7 +64,6 @@ export default class Spellbook{
         }
     }
 
-
     async getSpell(url){ 
         let query = `https://www.dnd5eapi.co${url}`;
         return getJSON(query);
@@ -74,15 +73,14 @@ export default class Spellbook{
         let spell = await this.getSpell(url); 
         let spellName = spell.name;
         if (this.find(spellName) == null){
-            this.knowSpells.append(spell);
+            this.knowSpells.push(spell);
             writeToLS(this.key, this.knowSpells);
         }
     }
 
     forgetSpell(spellName){
-        let spell = this.find(spellName);
-        let index = this.knowSpells.findIndex(spell);
-        this.knowSpells = this.knowSpells.splice(index, 1);
+        let spell1 = this.find(spellName);
+        this.knowSpells = this.knowSpells.filter(function(spell2){ return spell2 != spell1; });
         writeToLS(this.key, this.knowSpells);
     }
 

@@ -15,13 +15,11 @@ export function getJSON(url) {
         });
 }
 
-
 export function clearElement(element){
     while (element.firstChild) {
         element.firstChild.remove()
     }
 }   
-
 
 export async function clickSpell(url) {
   overlay.classList.add('open');
@@ -41,11 +39,11 @@ export async function clickSpell(url) {
 
   button.classList.add("close");
   button.textContent = "x Close";
-  name.textContent = spell.name;
-  level.textContent = spell.level;
-  range.textContent = spell.range;
-  duration.textContent = spell.duration;
-  casting_time.textContent = spell.casting_time;
+  name.textContent = ` ${spell.name}`;
+  level.textContent = ` ${spell.level}`;
+  range.textContent = ` ${spell.range}`;
+  duration.textContent = ` ${spell.duration}`;
+  casting_time.textContent = ` ${spell.casting_time}`;
 
   desc.textContent = spell.desc;
   higher_level.textContent = spell.higher_level; 
@@ -71,17 +69,6 @@ export async function clickSpell(url) {
 export function close() {
   overlay.classList.remove('open');
 }
-
-
-
-
-
-
-
-
-
-
-
 
 //@@@@@@@@@@@@@@@ Local Stoage @@@@@@@@@@@@@@@
 

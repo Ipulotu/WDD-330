@@ -97,7 +97,7 @@ html{
 
 .spells{
     display: grid;
-    grid-template-columns: 75% 10% 15%;
+    grid-template-columns: 75% 25%;
     
 }
 
@@ -114,6 +114,10 @@ html{
 
 }
 
+
+.selected{
+    background-color: var(--light-brown)
+}
 
 
 

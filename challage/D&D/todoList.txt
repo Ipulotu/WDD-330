@@ -1,0 +1,21 @@
+
+To Do List 
+1. Set up name input 
+2. Add scrolling to spells know https://www.youtube.com/watch?v=AHJk9JuW1fk
+3. Add more info to spells the just name 
+
+
+
+
+
+Streach Ideas: 
+
+* Add page numbers to the bottume of spells View
+* Add SpellbooksView.js 
+
+
+
+
+Done: 
+ 
+ class on bnt or p to show that the spell is added already 

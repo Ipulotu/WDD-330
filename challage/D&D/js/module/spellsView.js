@@ -8,7 +8,7 @@ export default class SpellView {
     }
 
     async buildPage(){
-       await this.spellbook.getSpellURL()
+       this.spellbook.urlIndex = 0;
        let main = document.createElement('div');
        let div = document.createElement('div');
        let h1 =  document.createElement('h1');
@@ -23,22 +23,25 @@ export default class SpellView {
        //Add Classes 
        main.classList.add("spellView");
        div.classList.add("spellList");
+    
+       
        h2.textContent ="Spells";
        h1.textContent ="name Places holder";
        homeBnt.textContent ="Home";
        nextBnt.textContent ="Next" ;
        prvBnt.textContent ="Previous";
-       homeBnt.setAttribute('id', "homeBnt")
+       homeBnt.setAttribute('id', "dashboardViewPage")
        nextBnt.setAttribute('id', "nextBnt")
        prvBnt.setAttribute('id', "prvBnt")
 
 
-       main.appendChild(h1)
+       main.appendChild(h1);
        main.appendChild(h2);
        main.appendChild(homeBnt);
        main.appendChild(div);
        main.appendChild(prvBnt);
        main.appendChild(nextBnt);
+
        this.elment.appendChild(main);
 
        //add event lisners. 
@@ -70,9 +73,12 @@ export default class SpellView {
             let spell = document.createElement('div');
             let p = document.createElement('p');
             let addBnt = document.createElement('button');
-            let removeBnt = document.createElement('button');
+            //let removeBnt = document.createElement('button');
 
             spell.classList.add("spells");
+            if(this.spellbook.find(result.name) != null){
+                addBnt.classList.add("selected");
+            }
 
             //Add link to spell info
 
@@ -80,17 +86,23 @@ export default class SpellView {
             
             addBnt.textContent = "add";
             addBnt.classList.add("addBnt");
-            removeBnt.textContent = "remove";
-            removeBnt.classList.add("addBnt");
+            // removeBnt.textContent = "remove";
+            // removeBnt.classList.add("addBnt");
 
             //Adding eventlistners
-            addBnt.addEventListener("click", this.spellbook.learnSpell, result.url);
-            removeBnt.addEventListener("click", this.spellbook, result.name);
+            addBnt.addEventListener("click", () => {
+                this.spellbook.learnSpell(result.url)
+                addBnt.classList.add("selected");
+            });
+            //removeBnt.addEventListener("click",  () => {this.spellbook.forgetSpell(result.name)});
+
+
+
             p.addEventListener('click', () => {clickSpell(result.url)});
             
             spell.appendChild(p);
             spell.appendChild(addBnt);
-            spell.appendChild(removeBnt);
+            //spell.appendChild(removeBnt);
             div.appendChild(spell);
         });
         clearElement(element);
