@@ -1,18 +1,20 @@
 import {clickSpell, clearElement} from "./utilities.js"
 
 export default class DashboardView {
-    constructor(elment, spellbook) {
+    constructor(elment) {
         this.elment = elment;
-        this.spellbook = spellbook;
+        this.spellbook = null;
     }
 
-    async buildPage(){
+    async buildPage(item){
+        this.spellbook = item;
+        //console.log(spellbook);
         let main = document.createElement('div');
         let div = document.createElement('div');
         let h1 =  document.createElement('h1');
         let h2 =  document.createElement('h2');
-        let addBnt =  document.createElement('button');
-       
+        //let addBnt =  document.createElement('button');
+        let spellbookView =  document.createElement('button');
 
       
         // creating spell list.
@@ -23,24 +25,36 @@ export default class DashboardView {
         main.classList.add("spellView");
         div.classList.add("spellList");
        
-        addBnt.setAttribute('id', "spellViewPage")
-        h2.textContent ="Spells";
-        h1.textContent ="name Places holder";
-        addBnt.textContent ="Spells";
+        //addBnt.setAttribute('id', "spellViewPage")
+        spellbookView.setAttribute('id', "spellbookView")
+        h2.textContent ="Your Spells";
+        spellbookView.textContent ="Spellbooks";
+        h1.textContent = `${this.spellbook.name}'s Spellbook` ;
+        //addBnt.textContent ="Add Spells";
     
         main.appendChild(h1);
         main.appendChild(h2);
         main.appendChild(div);
-        main.appendChild(addBnt);
+        //main.appendChild(addBnt);
+        main.appendChild(spellbookView);
+        clearElement(this.elment);
         this.elment.appendChild(main);
 
        //add event lisners.
+    //    addBnt.addEventListener("click", async () =>{
+    //         await this.spellView.buildPage(item);
+    //         let bnt = document.getElementById("dashboardViewPage");
+    //         bnt.addEventListener("click", () => {this.buildPage(this.spellbook)});
+    //    });
        
+       //spellbookView.addEventListener("click",  callback.buildPage)
+
+
        
     }
 
     async buildSpellKnowList(element){
-        let spells = this.spellbook.knowSpells;
+        let spells = this.spellbook.spellbook.knowSpells;
         let div = document.createElement('div');
          
 
@@ -56,8 +70,9 @@ export default class DashboardView {
             
             //Adding eventlistners
             p.addEventListener('click', () => {clickSpell(spellData.url)});
+
             removeBnt.addEventListener("click",  () => {
-                this.spellbook.forgetSpell(spellData.name) 
+                this.spellbook.spellbook.forgetSpell(spellData.name) 
                 clearElement(spell);
             });
             
@@ -70,6 +85,5 @@ export default class DashboardView {
         element.appendChild(div);
     }
     
-
-    
+ 
 }

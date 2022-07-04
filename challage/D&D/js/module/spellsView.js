@@ -2,12 +2,13 @@ import {clearElement, clickSpell} from "./utilities.js"
 
 
 export default class SpellView {
-    constructor(elment, spellbook) {
+    constructor(elment ) {
         this.elment = elment;
-        this.spellbook = spellbook;
+        
     }
 
-    async buildPage(){
+    async buildPage(item){
+       this.spellbook = item.spellbook;
        this.spellbook.urlIndex = 0;
        let main = document.createElement('div');
        let div = document.createElement('div');
@@ -16,40 +17,63 @@ export default class SpellView {
        let homeBnt =  document.createElement('button');
        let nextBnt =  document.createElement('button');
        let prvBnt =  document.createElement('button');
+       //building edit form 
+       let form = document.createElement('form');
+       let label = document.createElement('label');
+       let name = document.createElement('input');
+       let subBnt =  document.createElement('button');
+
+    
+
+       label.textContent = "Change Spellbook name"
+       subBnt.textContent ="Submit";
+       form.setAttribute('onsubmit', "return false;")
+       name.setAttribute('type', "text")
+       name.setAttribute('value', item.name)
+
+       
         // creating spell list.
        await this.buildSpellList(div, "next");
-
 
        //Add Classes 
        main.classList.add("spellView");
        div.classList.add("spellList");
     
-       
-       h2.textContent ="Spells";
-       h1.textContent ="name Places holder";
-       homeBnt.textContent ="Home";
+       h1.textContent ="Edit your Spellbook";
+       h2.textContent ="Add Spell";
+       homeBnt.textContent ="spellbooks";
        nextBnt.textContent ="Next" ;
        prvBnt.textContent ="Previous";
-       homeBnt.setAttribute('id', "dashboardViewPage")
+      
+
+       homeBnt.setAttribute('id', "spellbookView")
        nextBnt.setAttribute('id', "nextBnt")
        prvBnt.setAttribute('id', "prvBnt")
 
 
+
+       label.appendChild(name);
+       form.appendChild(label);
+       form.appendChild(subBnt);
+
        main.appendChild(h1);
+       main.appendChild(form);
        main.appendChild(h2);
        main.appendChild(homeBnt);
        main.appendChild(div);
        main.appendChild(prvBnt);
        main.appendChild(nextBnt);
-
+       clearElement(this.elment); 
        this.elment.appendChild(main);
 
        //add event lisners. 
-
        nextBnt.addEventListener("click", () =>{this.buildSpellList(div, "next") });
        prvBnt.addEventListener("click", () => {this.buildSpellList(div, "previous")});
+       subBnt.addEventListener("click", () => {
+        item.name = name.value;
+        alert(`Your name has been updated to ${item.name}`)
+    });
 
-        
     }
 
     async buildSpellList(element, direction){

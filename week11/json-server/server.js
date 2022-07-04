@@ -53,6 +53,8 @@ server.post('/login', (req, res) => {
   const accessToken = createToken({ email, password });
   res.status(200).json({ accessToken });
 });
+
+
 server.use((req, res, next) => {
   if (req.method === 'POST') {
     const { authorization } = req.headers;
@@ -68,6 +70,8 @@ server.use((req, res, next) => {
   // Continue to JSON Server router
   next();
 });
+
+
 server.use(/^(?!\/auth).*$/, (req, res, next) => {
   if (
     req.headers.authorization === undefined ||

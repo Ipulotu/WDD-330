@@ -85,3 +85,9 @@ export function writeToLS(key, data) {
     data = JSON.stringify(data);
     localStorage.setItem(key, data);
 }
+
+
+
+export function clearLS(key) { 
+    window.localStorage.removeItem(key);
+}
