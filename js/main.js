@@ -57,6 +57,14 @@ const urls = [
   {
     label: "week 10",
     url: "week10/index.html"
+  },
+  {
+    label: "week 11",
+    url: "week11/index.html"
+  },
+  {
+    label: "week 12-14(Challage Two)",
+    url: "challage/D&D/index.html"
   }
 
   ]

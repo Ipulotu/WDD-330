@@ -40,10 +40,10 @@ export async function clickSpell(url) {
   button.classList.add("close");
   button.textContent = "x Close";
   name.textContent = ` ${spell.name}`;
-  level.textContent = ` ${spell.level}`;
-  range.textContent = ` ${spell.range}`;
-  duration.textContent = ` ${spell.duration}`;
-  casting_time.textContent = ` ${spell.casting_time}`;
+  level.textContent = `Level: ${spell.level}`;
+  range.textContent = `Range: ${spell.range}`;
+  duration.textContent = `Duration: ${spell.duration}`;
+  casting_time.textContent = `Casting time: ${spell.casting_time}`;
 
   desc.textContent = spell.desc;
   higher_level.textContent = spell.higher_level; 

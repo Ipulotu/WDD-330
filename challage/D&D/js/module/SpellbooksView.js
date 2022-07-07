@@ -1,7 +1,7 @@
 import Spellbook from "./spellbook.js";
 import SpellView from "./spellsView.js"
 import DashboardView from "./dashboardView.js"
-import {clickSpell, clearElement, writeToLS, readFromLS} from "./utilities.js"
+import {clearElement, writeToLS, readFromLS} from "./utilities.js"
 
 export default class SpellbooksView {
     constructor(elment) {
@@ -10,7 +10,6 @@ export default class SpellbooksView {
         this.spellView = new SpellView(elment);
         this.dashboardView = new DashboardView(elment, this.spellView);
 
-        
         //Cheking LS for spellbooks & adding them if need 
         if (this.spellbooks.length == 0 && localStorage.getItem("spellbooks") !== null ){
             try{
@@ -28,7 +27,7 @@ export default class SpellbooksView {
                     });
                 } else {
                     let item = ls[0]
-                    console.log(item)
+                   
                     let spellbook = new Spellbook()
                     spellbook.getSpellURL();
                     spellbook.copy(item.spellbook);
@@ -41,9 +40,8 @@ export default class SpellbooksView {
             }
             catch (error) {
                 console.log(error);
-              }
+            }
         }
-     
     }
 
     async buildPage(){
@@ -51,6 +49,7 @@ export default class SpellbooksView {
         let div = document.createElement('div');
         let h1 =  document.createElement('h1');
         let p =  document.createElement('p');
+        let inputDiv = document.createElement('div');
         let input = document.createElement('input');
         let addBnt =  document.createElement('button');
        
@@ -60,17 +59,19 @@ export default class SpellbooksView {
         //Add Classes 
         main.classList.add("spellbooksView");
         div.classList.add("spellbookList");
-       
+        inputDiv.classList.add("inputDiv");
         addBnt.setAttribute('id', "addSpellbook")
         h1.textContent ="Choose a spellbook";
         p.textContent ="Add a Spellbook"
         addBnt.textContent ="add";
     
+        //appending elements
+        inputDiv.appendChild(input);
+        inputDiv.appendChild(addBnt);
         main.appendChild(h1);
         main.appendChild(div);
         main.appendChild(p);
-        main.appendChild(input);
-        main.appendChild(addBnt);
+        main.appendChild(inputDiv);
         clearElement(this.elment);
         this.elment.appendChild(main);
 
@@ -143,7 +144,7 @@ export default class SpellbooksView {
           "spellbook": spellbook
         };
         spellbook.getSpellURL();
-        console.log( spellbook);
+        
         this.spellbooks.push(item);
         writeToLS("spellbooks", this.spellbooks);
         this.buildPage();

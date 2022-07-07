@@ -4,7 +4,6 @@ import {clearElement, clickSpell} from "./utilities.js"
 export default class SpellView {
     constructor(elment ) {
         this.elment = elment;
-        
     }
 
     async buildPage(item){
@@ -17,13 +16,12 @@ export default class SpellView {
        let homeBnt =  document.createElement('button');
        let nextBnt =  document.createElement('button');
        let prvBnt =  document.createElement('button');
+
        //building edit form 
        let form = document.createElement('form');
        let label = document.createElement('label');
        let name = document.createElement('input');
        let subBnt =  document.createElement('button');
-
-    
 
        label.textContent = "Change Spellbook name"
        subBnt.textContent ="Submit";
@@ -31,7 +29,6 @@ export default class SpellView {
        name.setAttribute('type', "text")
        name.setAttribute('value', item.name)
 
-       
         // creating spell list.
        await this.buildSpellList(div, "next");
 
@@ -44,13 +41,9 @@ export default class SpellView {
        homeBnt.textContent ="spellbooks";
        nextBnt.textContent ="Next" ;
        prvBnt.textContent ="Previous";
-      
-
        homeBnt.setAttribute('id', "spellbookView")
        nextBnt.setAttribute('id', "nextBnt")
        prvBnt.setAttribute('id', "prvBnt")
-
-
 
        label.appendChild(name);
        form.appendChild(label);
@@ -70,21 +63,18 @@ export default class SpellView {
        nextBnt.addEventListener("click", () =>{this.buildSpellList(div, "next") });
        prvBnt.addEventListener("click", () => {this.buildSpellList(div, "previous")});
        subBnt.addEventListener("click", () => {
-        item.name = name.value;
-        alert(`Your name has been updated to ${item.name}`)
-    });
-
+           item.name = name.value;
+           alert(`Your name has been updated to ${item.name}`)
+       });
     }
 
     async buildSpellList(element, direction){
         let spells = [];
         if(direction == "next"){
             spells = await this.spellbook.nextSpells();
-        }
-        else if(direction == "previous"){
+        }else if(direction == "previous"){
             spells = await this.spellbook.prvSpells();
-        }
-        else{
+        }else{
             console.log("error in SpellsView.js on line 43")
         }
 
@@ -93,11 +83,9 @@ export default class SpellView {
         let div = document.createElement('div');
 
         spells.forEach(async (result) => {
-            //let spellData = await this.spellbook.getSpell(result.url);
             let spell = document.createElement('div');
             let p = document.createElement('p');
             let addBnt = document.createElement('button');
-            //let removeBnt = document.createElement('button');
 
             spell.classList.add("spells");
             if(this.spellbook.find(result.name) != null){
@@ -105,28 +93,19 @@ export default class SpellView {
             }
 
             //Add link to spell info
-
             p.textContent = result.name;
-            
             addBnt.textContent = "add";
             addBnt.classList.add("addBnt");
-            // removeBnt.textContent = "remove";
-            // removeBnt.classList.add("addBnt");
-
+            
             //Adding eventlistners
             addBnt.addEventListener("click", () => {
                 this.spellbook.learnSpell(result.url)
                 addBnt.classList.add("selected");
             });
-            //removeBnt.addEventListener("click",  () => {this.spellbook.forgetSpell(result.name)});
-
-
-
             p.addEventListener('click', () => {clickSpell(result.url)});
             
             spell.appendChild(p);
             spell.appendChild(addBnt);
-            //spell.appendChild(removeBnt);
             div.appendChild(spell);
         });
         clearElement(element);

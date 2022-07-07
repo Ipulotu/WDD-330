@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Week11 Team Activity">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W11 Team Activity</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction:column;
+            padding: 10px;
+        }
+        label {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            width: 200px;
+        }
+        button {
+            margin-top: 10px;
+            width: 100px
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Login</h1>
+        <form id="login">
+            <label for="username">Username<input type="text" id="username"></label>
+            <label for="password">Password<input type="password" id="password"></label>
+            <button type="button" form="login" id="btn">Submit</button>
+        </form>
+        <div id="stuff"></div>
+    </main>
+    <script type="module" src="./week11.js"></script>
+</body>
+</html>

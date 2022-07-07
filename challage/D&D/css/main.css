@@ -43,6 +43,66 @@ html{
   
 
 
+/*=========== SpellBooks page =================*/
+
+.spellbooksView{
+    margin: auto;
+    max-width: 600px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 25px;
+  
+}
+
+
+.spellbooksView h1{
+    padding: 1rem;
+}
+
+.spellbookList{
+    margin: auto;
+    max-width: 300px;
+    border: 2px solid black ;
+    background: var(--medium-brown);
+}
+
+
+
+.spellbooks{
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+    margin: .5rem;
+    border: 1px solid black;
+    background: white;
+}
+
+.spellbooks p{
+    padding-left: 1rem;
+}
+
+.spellbooks p:hover{
+    background-color: var(--light-brown);
+    margin: 0;
+    padding: 1rem;
+
+}
+
+
+.spellbooksView > p{
+    text-align: center;
+}
+
+.inputDiv{
+    display: block;
+    margin: auto;
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
+
+
 /*=========== Dashboard page =================*/
 
 
@@ -50,9 +110,14 @@ html{
 
 
 
+.spellListDash > div {
+    overflow: scroll;
+    max-height: 300px;
+}
 
-
-
+.spellsDash {
+    cursor: pointer;
+}
 
 
 
@@ -61,7 +126,7 @@ html{
 
 .spellView{
     margin: auto;
-    max-width: 1000px;
+    max-width: 600px;
     background-color: white;
     border: 2px solid black;
     border-radius: 25px;
@@ -91,7 +156,7 @@ html{
 }
 
 .spellList div:nth-child(even){
-    background-color: #F4AE4A;
+    background-color: var(--medium-brown) #F4AE4A;
 
 }
 

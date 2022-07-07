@@ -1,6 +1,5 @@
-
-import SpellbookController from './module/SpellbookController.js';
+import SpellbooksView from "./module/spellbooksview.js";
 
 let elment = document.querySelector("#content");
-const sb = new SpellbookController(elment);
-sb.init();
+const sb = new SpellbooksView(elment);
+sb.buildPage();
