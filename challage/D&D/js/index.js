@@ -1,4 +1,4 @@
-import SpellbooksView from "./module/spellbooksview.js";
+import SpellbooksView from "./module/SpellbooksView.js";
 
 let elment = document.querySelector("#content");
 const sb = new SpellbooksView(elment);
