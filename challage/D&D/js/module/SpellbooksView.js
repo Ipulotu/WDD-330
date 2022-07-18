@@ -1,7 +1,7 @@
 import Spellbook from "./spellbook.js";
 import SpellView from "./spellsView.js"
 import DashboardView from "./dashboardView.js"
-import {clearElement, writeToLS, readFromLS} from "./utilities.js"
+import {clearElement, writeToLS, readFromLS, validateName} from "./utilities.js"
 
 export default class SpellbooksView {
     constructor(elment) {
@@ -135,8 +135,8 @@ export default class SpellbooksView {
 
     addSpellbook(name){
         name = name.toString()
-        if(name == ""){
-          return;
+        if(!validateName(name)){
+            return;
         }
         let spellbook = new Spellbook(name);
         let item = {
@@ -158,5 +158,4 @@ export default class SpellbooksView {
         this.buildPage();
     }
 
-    
 }

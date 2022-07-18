@@ -107,9 +107,6 @@ html{
 
 
 
-
-
-
 .spellListDash > div {
     overflow: scroll;
     max-height: 300px;
@@ -122,13 +119,14 @@ html{
 
 
 
+
 /*=========== SpellList page =================*/
 
 .spellView{
     margin: auto;
     max-width: 600px;
     background-color: white;
-    border: 2px solid black;
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 25px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -155,8 +153,8 @@ html{
     border: 2px solid black;    
 }
 
-.spellList div:nth-child(even){
-    background-color: var(--medium-brown) #F4AE4A;
+.spellList > div div:nth-child(even){
+    background-color: var(--medium-brown);
 
 }
 

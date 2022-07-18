@@ -93,3 +93,23 @@ export function writeToLS(key, data) {
 export function clearLS(key) { 
     window.localStorage.removeItem(key);
 }
+
+
+//@@@@@@@@@@@@@@@ Local Stoage @@@@@@@@@@@@@@@
+
+
+export function validateName(input) {
+    if (input == "") {
+      alert("Name must be filled out");
+      return false;
+    }
+    for (const letter of input) {
+        if (!isNaN(letter) || letter == ""){
+            alert("No numbers are allowed in the name");
+            return false;
+            
+        }
+      }
+    return true;
+
+  }
